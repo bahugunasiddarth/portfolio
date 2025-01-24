@@ -31,92 +31,108 @@ const Contact = () => {
         </div>
         <div className="flex justify-between items-center md:items-stretch  flex-col md:flex-row pb-24">
           <div className="w-full md:pr-8">
-            <form>
-              <div class="my-6">
-                <label
-                  for="name"
-                  class={
-                    darkMode
-                      ? "block mb-2 text-lg font-medium text-gray-900"
-                      : "block mb-2 text-lg font-medium text-white"
-                  }
-                >
-                  Name
-                </label>
-                <input
-                  type="email"
-                  id="name"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter your name"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  for="email"
-                  class={
-                    darkMode
-                      ? "block mb-2 text-lg font-medium text-gray-900"
-                      : "block mb-2 text-lg font-medium text-white"
-                  }
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter your email"
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  for="message"
-                  class={
-                    darkMode
-                      ? "block mb-2 text-lg font-medium text-gray-900"
-                      : "block mb-2 text-lg font-medium text-white"
-                  }
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 h-28 w-full text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Enter your message"
-                  required
-                />
-              </div>
-              <div className="flex justify-between items-center py-4">
-  <a
-    href="mailto:bahugunasiddhi@gmail.com"
-    className="flex items-center gap-2 px-4 py-2 text-blue-600 font-medium border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition duration-200"
-    aria-label="Send me an email directly"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      strokeWidth="1.5"
-      stroke="currentColor"
-      className="w-5 h-5"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m0 0l9 5.25m-9-5.25l9-5.25m9 5.25l-9 5.25m9-5.25v10.5M3.75 21h16.5"
-      />
-    </svg>
-    Send me an email directly
-  </a>
-  
-  <button className="bg-indigo-500 text-white px-4 py-2 w-40 rounded-md hover:bg-indigo-400">
-    <a href="mailto:bahugunasiddhi@gmail.com">Submit</a>
-  </button>
-</div>
+          <form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  className="space-y-6"
+>
+  {/* Web3Forms API Key */}
+  <input type="hidden" name="access_key" value="5116cf68-4e51-44e0-ae50-ec625591df00" />
 
-            </form>
+  <div className="my-6">
+    <label
+      htmlFor="name"
+      className={
+        darkMode
+          ? "block mb-2 text-lg font-medium text-gray-900"
+          : "block mb-2 text-lg font-medium text-white"
+      }
+    >
+      Name
+    </label>
+    <input
+      type="text"
+      name="name"
+      id="name"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Enter your name"
+      required
+    />
+  </div>
+
+  <div className="mb-4">
+    <label
+      htmlFor="email"
+      className={
+        darkMode
+          ? "block mb-2 text-lg font-medium text-gray-900"
+          : "block mb-2 text-lg font-medium text-white"
+      }
+    >
+      Email
+    </label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Enter your email"
+      required
+    />
+  </div>
+
+  <div className="mb-4">
+    <label
+      htmlFor="message"
+      className={
+        darkMode
+          ? "block mb-2 text-lg font-medium text-gray-900"
+          : "block mb-2 text-lg font-medium text-white"
+      }
+    >
+      Message
+    </label>
+    <textarea
+      name="message"
+      id="message"
+      className="bg-gray-50 border border-gray-300 text-gray-900 h-28 w-full text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      placeholder="Enter your message"
+      required
+    />
+  </div>
+
+  <div className="flex justify-between items-center py-4">
+    <a
+      href="mailto:bahugunasiddhi@gmail.com"
+      className="flex items-center gap-2 px-4 py-2 text-blue-600 font-medium border border-blue-600 rounded-md hover:bg-blue-600 hover:text-white transition duration-200"
+      aria-label="Send me an email directly"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+        className="w-5 h-5"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m0 0l9 5.25m-9-5.25l9-5.25m9 5.25l-9 5.25m9-5.25v10.5M3.75 21h16.5"
+        />
+      </svg>
+      Send me an email directly
+    </a>
+
+    <button
+      type="submit"
+      className="bg-indigo-500 text-white px-4 py-2 w-40 rounded-md hover:bg-indigo-400"
+    >
+      Submit
+    </button>
+  </div>
+</form>
+
           </div>
           <div className="w-full flex flex-col md:items-end  mt-12 md:mt-6">
           <h1 className="text-3xl font-bold">Phone</h1>
@@ -167,7 +183,7 @@ const Contact = () => {
       >
         Made with
         <div className="text-red-500 px-2 text-2xl">&#10084;</div>
-        by Siddarth Bahuguna
+        by Siddharth Bahuguna
       </div>
     </div>
   );

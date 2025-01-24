@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../themeProvider";
 
-const Card = ({ imageSrc, title, description, link }) => {
+const Card = ({ imageSrc, title, description, link, demo }) => {
   return (
     <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 flex flex-col items-center">
       <img
@@ -11,17 +11,31 @@ const Card = ({ imageSrc, title, description, link }) => {
       />
       <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
       <p className="text-gray-600 text-center mb-4 font-bold transition-all duration-300 ease-in-out shadow-md p-3 rounded-lg">{description}</p>
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-green-500 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-sm font-medium py-2 px-6 rounded-lg shadow-lg hover:shadow-2xl"
-      >
-        Github Link
-      </a>
+      <div className="flex space-x-4">
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-green-500 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-sm font-medium py-2 px-6 rounded-lg shadow-lg hover:shadow-2xl"
+        >
+          Github Link
+        </a>
+        {/* Render Demo button only if the demo prop is provided */}
+        {demo && (
+          <a
+            href={demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-green-500 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-sm font-medium py-2 px-6 rounded-lg shadow-lg hover:shadow-2xl"
+          >
+            Demo
+          </a>
+        )}
+      </div>
     </div>
   );
 };
+
 
 const Projects = () => {
   const theme = useContext(ThemeContext);
@@ -33,18 +47,21 @@ const Projects = () => {
       title: "LiveCare Hospital",
       description: "HTML , CSS , Python , MongoDB , Vercel",
       link: "https://github.com/bahugunasiddarth/LiveCare-Hospital-project",
+      demo: "https://livecare-gamma.vercel.app/"
     },
     {
       imageSrc: "https://i.ibb.co/c6WYvbK/Screenshot-2025-01-23-221211.png",
-      title: "Ecommerce Project in React ",
+      title: "Ecommerce Project ",
       description: "Reactjs , Nodejs , Mongodb , Tailwind CSS",
       link: "https://example.com/project2",
+      demo: "https://livecare-gamma.vercel.app/"
     },
     {
       imageSrc: "https://i.ibb.co/4NFmTZd/Screenshot-2025-01-22-233642.png",
       title: "Portfolio",
       description: "Reactjs , JS , HTML , Tailwind CSS",
       link: "https://example.com/project3",
+      demo: "https://livecare-gamma.vercel.app/"
     },
     {
       imageSrc: "https://i.ibb.co/NK5S6SR/Screenshot-2025-01-22-233759.png",
@@ -96,6 +113,7 @@ const Projects = () => {
               title={project.title}
               description={project.description}
               link={project.link}
+              demo={project.demo}
             />
           ))}
         </div>
