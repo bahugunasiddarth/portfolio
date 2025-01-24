@@ -3,6 +3,7 @@ import heroBg from "../assets/webdev.svg";
 import { contactLinks } from "../constants";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
+import Typewriter from  'typewriter-effect';
 import { Link } from "react-scroll";
 import cloud from "../assets/cloudBg.png";
 import cloudDark from "../assets/cloudDark.png";
@@ -30,20 +31,18 @@ const Home = () => {
               >
                 Hi, I am Siddharth Bahuguna
               </motion.span>
-              {/* <span className="block lg:inline text-blue-500 z-0 transition duration-500 ease-in-out">
-                <Typical
-                  steps={[
-                    "Python Developer", 
-                    1000,
-                    "Full Stack Developer",
-                    1000,
-                    "Data analyst",
-                    1000,
-                  ]}
-                  loop={Infinity}
-                  wrapper="span"
-                />
-              </span> */}
+              <div className="text-blue-600">
+      <Typewriter
+        options={{
+          strings: ['Software Developer', 'Python Developer', 'Data Analyst'],
+          autoStart: true,
+          loop: true,
+          delay: 70,
+          deleteSpeed:20,
+        }}
+      />
+    </div>
+
 
             </h1>
             <p

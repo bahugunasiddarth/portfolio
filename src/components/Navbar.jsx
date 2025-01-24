@@ -41,7 +41,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav
+      <nav  
         className={
           darkMode
             ? "bg-white border border-gray-200 shadow-lg px-4 fixed w-full top-0 z-50"
