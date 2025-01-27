@@ -54,14 +54,21 @@ const Projects = () => {
       title: "Ecommerce Project ",
       description: "Reactjs , Nodejs , Mongodb , Tailwind CSS",
       link: "https://example.com/project2",
-      demo: "https://livecare-gamma.vercel.app/"
+      demo: "https://livecare-gamma.vercel.pp/"
     },
     {
       imageSrc: "https://i.ibb.co/4NFmTZd/Screenshot-2025-01-22-233642.png",
       title: "Portfolio",
       description: "Reactjs , JS , HTML , Tailwind CSS",
-      link: "https://example.com/project3",
-      demo: "https://livecare-gamma.vercel.app/"
+      link: "https://github.com/bahugunasiddarth/portfolio",
+      demo: "https://siddharthbahuguna.vercel.app//"
+    },
+    {
+      imageSrc: "https://i.ibb.co/vvVqb5c/Screenshot-2025-01-26-224637.png",
+      title: "TODO Application",
+      description: "Javascript , Reactjs , Nodejs , Redux , Tailwind CSS",
+      link: "https://github.com/bahugunasiddarth/To-Do",
+      demo: "https://to-do-webappli.vercel.app/"
     },
     {
       imageSrc: "https://i.ibb.co/NK5S6SR/Screenshot-2025-01-22-233759.png",
