@@ -45,16 +45,16 @@ const Projects = () => {
     {
       imageSrc: "https://i.ibb.co/LZM7PGM/Whats-App-Image-2025-01-22-at-18-39-03-c8c85761.jpg",
       title: "LiveCare Hospital",
-      description: "HTML , CSS , Python , MongoDB , Vercel",
+      description: "HTML , CSS , Python , MongoDB , Vercel ",
       link: "https://github.com/bahugunasiddarth/LiveCare-Hospital-project",
       demo: "https://livecare-gamma.vercel.app/"
     },
     {
-      imageSrc: "https://i.ibb.co/c6WYvbK/Screenshot-2025-01-23-221211.png",
+      imageSrc: "https://i.ibb.co/3mXPKSp8/Screenshot-2025-02-23-200741.png",
       title: "Ecommerce Project ",
-      description: "Reactjs , Nodejs , Mongodb , Tailwind CSS",
-      link: "https://example.com/project2",
-      demo: "https://livecare-gamma.vercel.pp/"
+      description: "Reactjs , Nodejs , Mongodb , Tailwind CSS , Expressjs",
+      link: "https://github.com/bahugunasiddarth/BookVault",
+      demo: "https://bookvault312.vercel.app/"
     },
     {
       imageSrc: "https://i.ibb.co/4NFmTZd/Screenshot-2025-01-22-233642.png",
