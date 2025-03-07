@@ -34,7 +34,7 @@ const Home = () => {
               <div className="text-blue-600">
       <Typewriter
         options={{
-          strings: ['Software Developer', 'Python Developer', 'Data Analyst'],
+          strings: ['Software Developer', 'Python Developer','Flutter Developer', 'Data Analyst'],
           autoStart: true,
           loop: true,
           delay: 70,
@@ -52,7 +52,7 @@ const Home = () => {
                   : "mt-3 text-base text-white sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0"
               }
             >
-              I am a Front-End / Full-Stack Developer/ Python Developer
+              I am a Front-End / Mobile Developer/ Python Developer
             </p>
             <div className="flex md:justify-start ">
               {contactLinks.map((el) => (

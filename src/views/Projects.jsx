@@ -57,6 +57,13 @@ const Projects = () => {
       demo: "https://bookvault312.vercel.app/"
     },
     {
+      imageSrc: "https://i.ibb.co/gFFnj9pW/tuxpi-com-1741343172.jpg",
+      title: "Event BookingApp",
+      description: "Flutter , Dart , Firebase",
+      link: "https://drive.google.com/file/d/1DqoXkx2OCZZPuxlNDNr0HyNdgOTvHiGJ/view?usp=drivesdk",
+      demo: "https://drive.google.com/file/d/1DqoXkx2OCZZPuxlNDNr0HyNdgOTvHiGJ/view?usp=drivesdk"
+    },
+    {
       imageSrc: "https://i.ibb.co/4NFmTZd/Screenshot-2025-01-22-233642.png",
       title: "Portfolio",
       description: "Reactjs , JS , HTML , Tailwind CSS",
