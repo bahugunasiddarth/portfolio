@@ -33,12 +33,7 @@ const About = () => {
                 : "mt-4 text-xl text-justify text-white"
             }
           >
-            I’m a self-taught developer with a strong grasp of web development, Python, and databases.
-            I thrive on turning complex ideas into simple, functional applications by writing efficient, reusable code. 
-            Whether it's building the backend of a web app or creating dynamic database systems, I love solving problems and improving user experiences.
-            I focus on delivering clean, scalable solutions that stand the test of time. Currently, I’m diving deeper into backend development,
-            working on systems that power seamless, high-performance applications. 
-            For me, every project is an opportunity to innovate and learn something new.
+            I'm a self-taught developer with a strong grasp of web development, Python, databases, and Flutter mobile development. I thrive on turning complex ideas into simple, functional applications by writing efficient, reusable code. Whether it's building the backend of a web app, creating dynamic database systems, or developing mobile applications, I love solving problems and improving user experiences. I focus on delivering clean, scalable solutions that stand the test of time. Currently, I’m diving deeper into backend development and mobile app development, working on systems that power seamless, high-performance applications. For me, every project is an opportunity to innovate and learn something new.
           </p>
         </motion.div>
 
