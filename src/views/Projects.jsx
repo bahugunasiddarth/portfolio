@@ -60,7 +60,7 @@ const Projects = () => {
       imageSrc: "https://i.ibb.co/gFFnj9pW/tuxpi-com-1741343172.jpg",
       title: "Event BookingApp",
       description: "Flutter , Dart , Firebase",
-      link: "https://drive.google.com/file/d/1DqoXkx2OCZZPuxlNDNr0HyNdgOTvHiGJ/view?usp=drivesdk",
+      link: "https://github.com/bahugunasiddarth/appbooking",
       demo: "https://drive.google.com/file/d/1DqoXkx2OCZZPuxlNDNr0HyNdgOTvHiGJ/view?usp=drivesdk"
     },
     {
