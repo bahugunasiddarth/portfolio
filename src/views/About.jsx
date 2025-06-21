@@ -176,13 +176,11 @@
                   <div className="grid grid-cols-2 md:grid-cols-2 gap-4 md:gap-6">
                     {[
                       "Full-stack web development",
-                      "Database design & optimization",
+                      "Frontend Development",
+                      "Flutter App Development",
                       "API development & integration",
                       "Performance optimization",
-                      "Cloud architecture & deployment",
                       "UI/UX design implementation",
-                      "DevOps & CI/CD pipelines",
-                      "Technical consulting",
                     ].map((item, index) => (
                       <motion.div
                         key={index}
