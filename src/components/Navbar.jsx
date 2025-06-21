@@ -11,6 +11,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
+  const [isMobile, setIsMobile] = useState(false);
   const darkMode = theme.state.darkMode;
   
   const navLinks = [
@@ -64,8 +65,18 @@ const Navbar = () => {
       setScrolled(window.scrollY > 20);
     };
 
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkMobile();
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", checkMobile);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", checkMobile);
+    };
   }, []);
 
   const toggleTheme = () => {
@@ -90,7 +101,7 @@ const Navbar = () => {
           scrolled ? "border-b border-opacity-10" : "border-b border-transparent"
         } ${darkMode ? "border-gray-200" : "border-gray-700"}`}
       >
-        <div className="container mx-auto px-6 py-3">
+        <div className="container mx-auto px-4 sm:px-6 py-3">
           <div className="flex justify-between items-center">
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -99,20 +110,20 @@ const Navbar = () => {
             >
               <a
                 href="/"
-                className={`text-2xl font-bold tracking-tight ${
+                className={`text-xl sm:text-2xl font-bold tracking-tight ${
                   darkMode 
                     ? "text-gray-800 hover:text-blue-500" 
                     : "text-white hover:text-blue-300"
                 } transition-all duration-200 transform hover:scale-105 flex items-center`}
                 style={{ fontFamily: "'Inter', 'system-ui', 'sans-serif'" }}
               >
-                <span className="ml-12">
+                <span className="ml-2 sm:ml-12">
                   &lt;Siddarth/&gt;
                 </span>
               </a>
             </motion.div>
             
-            <div className="hidden lg:flex items-center space-x-8 ">
+            <div className="hidden lg:flex items-center space-x-8">
               <ul className="flex space-x-1 cursor-pointer">
                 {navLinks.map((link) => (
                   <motion.li 
@@ -180,8 +191,8 @@ const Navbar = () => {
               </div>
             </div>
             
-            <div className="flex lg:hidden items-center space-x-4">
-              <div className="flex items-center space-x-3">
+            <div className="flex lg:hidden items-center space-x-2 sm:space-x-4">
+              <div className="flex items-center space-x-1 sm:space-x-3">
                 {socialLinks.slice(0, 2).map((social) => (
                   <motion.a
                     key={social.name}
@@ -193,7 +204,7 @@ const Navbar = () => {
                       darkMode
                         ? "text-gray-700 hover:text-blue-600"
                         : "text-gray-400 hover:text-blue-400"
-                    } transition-all text-xl`}
+                    } transition-all text-lg sm:text-xl`}
                     aria-label={social.name}
                   >
                     {social.icon}
@@ -210,13 +221,13 @@ const Navbar = () => {
                   } transition-all`}
                   aria-label="Toggle theme"
                 >
-                  {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+                  {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
                 </motion.button>
               </div>
 
               <Hamburger
                 toggled={toggle}
-                size={24}
+                size={isMobile ? 20 : 24}
                 duration={0.6}
                 distance="lg"
                 toggle={setToggle}
@@ -236,11 +247,12 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className={`fixed top-20 right-6 z-50 w-64 rounded-xl ${
+            className={`fixed top-16 sm:top-20 right-4 sm:right-6 z-50 w-11/12 max-w-xs rounded-xl ${
               darkMode
                 ? "bg-white/95 backdrop-blur-lg shadow-xl"
                 : "bg-gray-800/95 backdrop-blur-lg shadow-xl"
             } overflow-hidden`}
+            onClick={(e) => e.stopPropagation()}
           >
             <ul className="space-y-1 p-2">
               {navLinks.map((link) => (
@@ -268,12 +280,12 @@ const Navbar = () => {
                     onClick={() => setToggle(false)}
                   >
                     {link.icon}
-                    {link.name}
+                    <span className="text-sm sm:text-base">{link.name}</span>
                   </Link>
                 </motion.li>
               ))}
               
-              <div className="flex justify-center space-x-4 pt-2 pb-3">
+              <div className="flex justify-center space-x-3 pt-2 pb-3">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.name}
@@ -282,7 +294,7 @@ const Navbar = () => {
                     rel="noopener noreferrer"
                     whileHover={{ y: -3 }}
                     whileTap={{ scale: 0.9 }}
-                    className={`p-3 rounded-full ${
+                    className={`p-2 sm:p-3 rounded-full ${
                       darkMode
                         ? "bg-gray-100 text-gray-700 hover:text-blue-600"
                         : "bg-gray-700 text-gray-300 hover:text-blue-400"
@@ -295,6 +307,19 @@ const Navbar = () => {
               </div>
             </ul>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Overlay for mobile menu */}
+      <AnimatePresence>
+        {toggle && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm lg:hidden"
+            onClick={() => setToggle(false)}
+          />
         )}
       </AnimatePresence>
     </>

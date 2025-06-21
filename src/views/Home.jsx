@@ -86,15 +86,15 @@ const Home = () => {
       ))}
 
       <motion.main
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-center md:justify-between h-screen relative z-10"
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center justify-center md:justify-between h-screen relative z-10 py-12 md:py-0"
         id="/"
         initial="hidden"
         animate="visible"
         variants={container}
       >
-        <div className="sm:text-center lg:text-left">
+        <div className="text-center md:text-left w-full md:w-1/2 px-4 sm:px-0">
           <motion.h1 
-            className="text-4xl tracking-tight font-extrabold sm:text-5xl md:text-6xl"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-5xl lg:text-6xl tracking-tight font-extrabold"
             variants={item}
           >
             <motion.span
@@ -103,7 +103,7 @@ const Home = () => {
               Hi, I am Siddharth Bahuguna
             </motion.span>
             <motion.div 
-              className={`mt-2 ${darkMode ? "text-blue-600" : "text-blue-400"}`}
+              className={`mt-2 ${darkMode ? "text-blue-600" : "text-blue-400"} text-2xl sm:text-3xl md:text-4xl`}
               variants={item}
             >
               <Typewriter
@@ -126,9 +126,9 @@ const Home = () => {
           </motion.h1>
 
           <motion.p
-            className={`mt-3 text-base sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 ${
+            className={`mt-3 text-sm sm:text-base md:text-lg ${
               darkMode ? "text-gray-700" : "text-gray-300"
-            }`}
+            } max-w-md sm:max-w-xl mx-auto md:mx-0`}
             variants={item}
           >
             Crafting digital experiences with clean code and innovative solutions.
@@ -136,7 +136,7 @@ const Home = () => {
           </motion.p>
 
           <motion.div 
-            className="mt-8 sm:mt-10 sm:flex sm:justify-center lg:justify-start gap-4"
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-center md:justify-start gap-3 sm:gap-4"
             variants={item}
           >
             <motion.div
@@ -152,10 +152,10 @@ const Home = () => {
                 href="https://drive.google.com/file/d/1Livk5uLSmDp3wQUbDHQruPGrkXXt7yuj/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`relative z-10 w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white ${darkMode ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"} md:py-4 md:text-lg md:px-10 transition-all duration-300`}
+                className={`relative z-10 w-full flex items-center justify-center px-6 py-2 sm:px-8 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white ${darkMode ? "bg-blue-600 hover:bg-blue-700" : "bg-blue-500 hover:bg-blue-600"} md:py-3 md:text-lg md:px-10 transition-all duration-300`}
               >
                 View Resume
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
               </a>
@@ -174,14 +174,14 @@ const Home = () => {
                 to="contact"
                 smooth={true}
                 duration={500}
-                className={`relative z-10 w-full flex items-center justify-center px-8 py-3 border text-base font-medium rounded-md md:py-4 md:text-lg md:px-10 transition-all duration-300 ${
+                className={`relative z-10 w-full flex items-center justify-center px-6 py-2 sm:px-8 sm:py-3 border text-sm sm:text-base font-medium rounded-md md:py-3 md:text-lg md:px-10 transition-all duration-300 ${
                   darkMode 
                     ? "bg-white text-gray-900 hover:bg-gray-100" 
                     : "bg-gray-900/10 text-white border-gray-700 hover:bg-gray-900/20"
                 }`}
               >
                 Contact Me
-                <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg className="ml-2 w-3 h-3 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
               </Link>
@@ -190,22 +190,22 @@ const Home = () => {
         </div>
 
         <motion.div
-          className="relative md:w-3/6 hidden sm:block"
+          className="relative w-full md:w-1/2 px-4 sm:px-0 mb-8 md:mb-0"
           variants={floating}
           animate="float"
         >
           {/* Transparent image container with floating effect */}
-          <div className="relative">
-            <motion.img
-              src={developerIllustration}
-              alt="Developer illustration"
-              className="w-full h-auto drop-shadow-2xl"
-              style={{
-                filter: darkMode ? "drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1))" : "drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))"
-              }}
-            />
-          </div>
-        </motion.div>
+            <div className="relative flex justify-center mt-12 ">
+              <motion.img
+                src={developerIllustration}
+                alt="Developer illustration"
+                className="w-3/4 sm:w-2/3 md:w-full h-auto drop-shadow-2xl max-w-lg"
+                style={{
+                  filter: darkMode ? "drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1))" : "drop-shadow(0 10px 15px rgba(0, 0, 0, 0.3))"
+                }}
+              />
+            </div>
+          </motion.div>
       </motion.main>
 
       <style jsx global>{`
