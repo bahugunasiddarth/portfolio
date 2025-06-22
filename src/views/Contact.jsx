@@ -291,27 +291,7 @@ const Contact = () => {
               </div>
               
               <div className="space-y-6 md:space-y-9">
-                <div 
-                  className="flex items-start gap-4 md:gap-5 group"
-                  onMouseEnter={() => setHoveredContact('phone')}
-                  onMouseLeave={() => setHoveredContact(null)}
-                >
-                  <div className={`p-2 md:p-3 rounded-lg md:rounded-xl ${darkMode ? "bg-blue-900/30 text-blue-400 group-hover:bg-blue-900/40" : "bg-blue-100 text-blue-600 group-hover:bg-blue-200"} shadow-inner transition-all duration-300`}>
-                    <FiPhone className="w-5 h-5 md:w-6 md:h-6" />
-                  </div>
-                  <div>
-                    <h4 className={`text-base md:text-lg font-semibold mb-1 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>Direct Consultation</h4>
-                    <a
-                      href="tel:+919528753687"
-                      className={`text-xs md:text-sm ${darkMode ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-700"} transition-all duration-300 flex items-center gap-2 md:gap-3`}
-                    >
-                      +91 9528753687
-                      <span className={`text-[10px] md:text-xs px-2 py-1 md:px-2.5 md:py-1 rounded-full ${darkMode ? "bg-blue-900/30 text-blue-300" : "bg-blue-100 text-blue-600"}`}>
-                        Mon-Fri, 9AM-6PM IST
-                      </span>
-                    </a>
-                  </div>
-                </div>
+                
 
                 <div 
                   className="flex items-start gap-4 md:gap-5 group"

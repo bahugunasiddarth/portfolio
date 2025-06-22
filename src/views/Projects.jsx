@@ -193,11 +193,11 @@ const Projects = () => {
       demo: "https://drive.google.com/file/d/1DqoXkx2OCZZPuxlNDNr0HyNdgOTvHiGJ/view?usp=drivesdk"
     },
     {
-      imageSrc: "https://i.ibb.co/4NFmTZd/Screenshot-2025-01-22-233642.png",
+      imageSrc: "https://i.ibb.co/mCTp1m2V/Screenshot-2025-06-23-030832.png",
       title: "Portfolio",
       description: "Reactjs , JS , HTML , Tailwind CSS",
       link: "https://github.com/bahugunasiddarth/portfolio",
-      demo: "https://siddharthbahuguna.vercel.app//"
+      demo: "https://siddharthbahuguna.in"
     },
     {
       imageSrc: "https://i.ibb.co/vvVqb5c/Screenshot-2025-01-26-224637.png",
