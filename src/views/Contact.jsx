@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle } from "react-icons/fi";
-import { FaLinkedin, FaGithub, FaTwitter, FaDribbble } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaTwitter, FaDribbble, FaInstagram } from "react-icons/fa";
 import { ThemeContext } from "../themeProvider";
 
 const Contact = () => {
@@ -18,10 +18,9 @@ const Contact = () => {
   const [hoveredContact, setHoveredContact] = useState(null);
 
   const contactLinks = [
-    { name: "LinkedIn", icon: <FaLinkedin className="w-5 h-5" />, link: "#" },
-    { name: "GitHub", icon: <FaGithub className="w-5 h-5" />, link: "#" },
-    { name: "Twitter", icon: <FaTwitter className="w-5 h-5" />, link: "#" },
-    { name: "Dribbble", icon: <FaDribbble className="w-5 h-5" />, link: "#" }
+    { name: "LinkedIn", icon: <FaLinkedin className="w-5 h-5" />, link: "https://www.linkedin.com/in/siddharth-bahuguna-3611a1212/" },
+    { name: "GitHub", icon: <FaGithub className="w-5 h-5" />, link: "https://github.com/bahugunasiddarth" },
+    { name: "Instagram", icon: <FaInstagram className="w-5 h-5" />, link: "https://www.instagram.com/bahugunasiddarth_2?igsh=OXVxZWRrOWtxaXBq" }
   ];
 
   const handleSubmit = async (e) => {
@@ -311,18 +310,6 @@ const Contact = () => {
                         Mon-Fri, 9AM-6PM IST
                       </span>
                     </a>
-                    <AnimatePresence>
-                      {hoveredContact === 'phone' && (
-                        <motion.p 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-500"} overflow-hidden`}
-                        >
-                          Schedule a 30-minute consultation call to discuss your project requirements.
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
                   </div>
                 </div>
 
@@ -349,18 +336,6 @@ const Contact = () => {
                         Fast Response
                       </span>
                     </a>
-                    <AnimatePresence>
-                      {hoveredContact === 'email' && (
-                        <motion.p 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-500"} overflow-hidden`}
-                        >
-                          For urgent matters, expect a response within 4-6 business hours.
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
                   </div>
                 </div>
 
@@ -373,28 +348,15 @@ const Contact = () => {
                     <FiMapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h4 className={`text-lg font-semibold mb-1 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>Global Presence</h4>
+                    <h4 className={`text-lg font-semibold mb-1 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>Presence</h4>
                     <address className={`not-italic text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} transition-all duration-300`}>
                       Greater Noida, Uttar Pradesh<br />
                       India, 201310
                     </address>
                     <div className="mt-2">
-                      <span className={`text-xs px-2.5 py-1 rounded-full ${darkMode ? "bg-purple-900/30 text-purple-300" : "bg-purple-100 text-purple-600"}`}>
-                        Available for Global Clients
-                      </span>
+                      
                     </div>
-                    <AnimatePresence>
-                      {hoveredContact === 'location' && (
-                        <motion.p 
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: 'auto' }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className={`text-xs mt-2 ${darkMode ? "text-gray-500" : "text-gray-500"} overflow-hidden`}
-                        >
-                          Serving clients worldwide with flexible timezone availability.
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
+                
                   </div>
                 </div>
 
