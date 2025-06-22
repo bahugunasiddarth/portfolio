@@ -330,7 +330,7 @@ const Contact = () => {
                   <div>
                     <h4 className={`text-base md:text-lg font-semibold mb-1 ${darkMode ? "text-gray-200" : "text-gray-700"}`}>Presence</h4>
                     <address className={`not-italic text-xs md:text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} transition-all duration-300`}>
-                      Greater Noida, Uttar Pradesh<br />
+                      Noida, Uttar Pradesh<br />
                       India, 201310
                     </address>
                   </div>
