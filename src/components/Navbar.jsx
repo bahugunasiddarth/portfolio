@@ -128,7 +128,7 @@ const Navbar = () => {
                 style={{ fontFamily: "'Inter', 'system-ui', 'sans-serif'" }}
               >
                 <span className="ml-2 sm:ml-12">
-                  &lt;Siddarth/&gt;
+                  &lt;Siddharth/&gt;
                 </span>
               </a>
             </motion.div>
@@ -197,7 +197,7 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     whileTap={{ scale: 0.9 }}
-                    className={`p-2 rounded-full ${
+                    className={`p-1 sm:p-2 rounded-full ${
                       darkMode
                         ? "text-gray-700 hover:text-blue-600"
                         : "text-gray-400 hover:text-blue-400"
