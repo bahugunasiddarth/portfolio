@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { serviceData } from "../constants";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
+import { Briefcase } from 'lucide-react';
 
 const Services = () => {
   const theme = useContext(ThemeContext);
@@ -73,7 +74,6 @@ const Services = () => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
             opacity: Math.random() * 0.2 + 0.05,
-            
           }}
         />
       ))}
@@ -98,25 +98,27 @@ const Services = () => {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDUwIDUwIj48cGF0aCBkPSJNNTAgMEgwdjUwIiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPjwvc3ZnPg==')] bg-[size:50px_50px]" />
       </div>
 
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:p x-8 relative z-10">
         {/* Premium header with animated elements */}
         <motion.header
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, type: "spring" }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mb-28"
-        >
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            transition={{ delay: 0.2, type: "spring" }}
-            className="inline-block mb-6"
+            initial={{ opacity: 0, y: -50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, type: "spring" }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-center mb-16"
           >
-            <span className="text-xs font-semibold tracking-widest py-2 px-4 rounded-full bg-blue-500/10 text-blue-500 border border-blue-500/20">
-              PROFESSIONAL SERVICES
-            </span>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 -mt-10"
+            >
+              <div className={`inline-flex items-center justify-center px-4 py-2 rounded-full ${theme.state.darkMode ? 'bg-gray-800' : 'bg-gray-100'} mb-4`}>
+                <Briefcase className={`w-5 h-5 mr-2 ${theme.state.darkMode ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className="text-sm font-medium text-blue-400"> Professional Service</span>
+              </div>
+            </motion.div>
           
           <motion.h2 
             className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8"
@@ -124,35 +126,21 @@ const Services = () => {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
           >
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600 dark:from-blue-300 dark:to-blue-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-sky-500 dark:from-sky-200 dark:to-sky-400">
               Exceptional
             </span>{" "}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600 dark:from-purple-300 dark:to-purple-500">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-cyan-500 dark:from-cyan-200 dark:to-cyan-400">
               Solutions
             </span>
           </motion.h2>
-          
-          <motion.div
-            className="relative w-64 h-px mx-auto mb-12 bg-gradient-to-r from-transparent via-blue-400 to-transparent overflow-hidden"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 1.2, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.div
-              className="absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-blue-500 to-transparent"
-              initial={{ x: "-100%" }}
-              whileInView={{ x: "200%" }}
-              transition={{ duration: 1.5, delay: 0.8, repeat: Infinity, ease: "linear" }}
-            />
-          </motion.div>
-          
+
           <motion.p
-            className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-gray-700 dark:text-gray-200 max-w-4xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            We deliver premium digital experiences crafted with cutting-edge technology and innovative design principles.
+            I deliver premium digital experiences crafted with cutting-edge technology and innovative design principles.
           </motion.p>
         </motion.header>
 
@@ -171,8 +159,8 @@ const Services = () => {
               whileHover="hover"
               className={`group relative rounded-3xl p-5 overflow-hidden ${
                 theme.state.darkMode
-                  ? "bg-gray-800/50 border border-gray-700/30 hover:border-blue-500/40"
-                  : "bg-white/95  border border-gray-200/80 hover:border-blue-300/90"
+                  ? "bg-gray-900/70 border border-gray-700/50 hover:border-blue-400/60"
+                  : "bg-white/95 border border-gray-200 hover:border-blue-400/90"
               } shadow-2xl hover:shadow-3xl transition-all duration-500 transform-style-preserve-3d`}
               style={{
                 perspective: "1000px",
@@ -213,8 +201,8 @@ const Services = () => {
                 <motion.div
                   className={`p-5 rounded-2xl mb-8 ${
                     theme.state.darkMode
-                      ? "bg-gray-700/40 group-hover:bg-blue-900/30"
-                      : "bg-blue-100/80 group-hover:bg-blue-200/70"
+                      ? "bg-gray-800/60 group-hover:bg-blue-900/40"
+                      : "bg-blue-100 group-hover:bg-blue-200"
                   } transition-all duration-500 shadow-lg group-hover:shadow-xl`}
                   whileHover={{ 
                     y: -5,
@@ -230,13 +218,13 @@ const Services = () => {
                 </motion.div>
 
                 {/* Title with gradient text */}
-                <h3 className="text-2xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-blue-700 dark:from-blue-400 dark:to-blue-600">
+                <h3 className="text-2xl font-bold mb-5 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800 dark:from-blue-400 dark:to-blue-500">
                   {el.name}
                 </h3>
 
                 {/* Description with animated border */}
                 <div className="relative mb-8 px-4 pb-6">
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                     {el.desc}
                   </p>
                   <motion.div
@@ -247,8 +235,6 @@ const Services = () => {
                     viewport={{ once: true }}
                   />
                 </div>
-
-                
               </div>
             </motion.article>
           ))}

@@ -1,45 +1,174 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "../themeProvider";
+import React, { useState } from "react";
+import { FiGithub, FiExternalLink, FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tooltip } from "react-tooltip";
+import { Folder } from 'lucide-react'; 
 
-const Card = ({ imageSrc, title, description, link, demo }) => {
+const techIcons = {
+  "HTML": "devicon-html5-plain colored",
+  "CSS": "devicon-css3-plain colored",
+  "Python": "devicon-python-plain colored",
+  "MongoDB": "devicon-mongodb-plain colored",
+  "Vercel": "devicon-vercel-plain",
+  "Reactjs": "devicon-react-original colored",
+  "Nodejs": "devicon-nodejs-plain colored",
+  "Expressjs": "devicon-express-original",
+  "Tailwind CSS": "devicon-tailwindcss-plain colored",
+  "Flutter": "devicon-flutter-plain colored",
+  "Dart": "devicon-dart-plain colored",
+  "Firebase": "devicon-firebase-plain colored",
+  "JavaScript": "devicon-javascript-plain colored",
+  "Redux": "devicon-redux-original colored",
+  "SQL": "devicon-mysql-plain colored",
+  "PowerBI": "devicon-powerbi-plain colored"
+};
+
+const Card = ({ imageSrc, title, description, link, demo, index }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        delay: index * 0.1,
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    },
+    hover: { 
+      y: -8,
+      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+    }
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 flex flex-col items-center">
-      <img
-        src={imageSrc}
-        alt="Project Thumbnail"
-        className="w-full h-48 object-cover rounded-md mb-4"
-      />
-      <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-      <p className="text-gray-600 text-center mb-4 font-bold transition-all duration-300 ease-in-out shadow-md p-3 rounded-lg">{description}</p>
-      <div className="flex space-x-4">
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-green-500 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-sm font-medium py-2 px-6 rounded-lg shadow-lg hover:shadow-2xl"
+    <motion.div
+      className="bg-white rounded-2xl overflow-hidden shadow-xl border border-gray-100 relative group w-full max-w-[400px] mx-auto"
+      variants={cardVariants}
+      initial="hidden"
+      animate="visible"
+      whileHover="hover"
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <div className="relative h-48 sm:h-56 overflow-hidden">
+        <motion.img
+          src={imageSrc}
+          alt={title}
+          className="w-full h-full object-cover"
+          initial={{ scale: 1 }}
+          animate={{ scale: isHovered ? 1.05 : 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        />
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0.5 }}
+          transition={{ duration: 0.4 }}
+        />
+        <motion.div 
+          className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
+          transition={{ delay: 0.1 }}
         >
-          Github Link
-        </a>
-        {/* Render Demo button only if the demo prop is provided */}
-        {demo && (
-          <a
-            href={demo}
+          <h3 className="text-lg sm:text-xl font-bold text-white drop-shadow-md">{title}</h3>
+        </motion.div>
+      </div>
+      
+      <div className="p-4 sm:p-6">
+        <div className="flex justify-between items-start mb-3 sm:mb-4">
+          <motion.h3 
+            className="text-lg sm:text-xl font-bold text-gray-900"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            {title}
+          </motion.h3>
+          <motion.button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-gray-500 hover:text-gray-700 transition-colors"
+            aria-label={isExpanded ? "Collapse details" : "Expand details"}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {isExpanded ? <FiChevronUp size={18} className="sm:h-5 sm:w-5" /> : <FiChevronDown size={18} className="sm:h-5 sm:w-5" />}
+          </motion.button>
+        </div>
+
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <p className="text-gray-600 mb-3 sm:mb-4 text-xs sm:text-sm">Click below to view the code or live demo of this project.</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
+          {description.split(",").map((tech, i) => {
+            const techKey = tech.trim();
+            return (
+              <motion.span 
+                key={i}
+                data-tooltip-id="tech-tooltip"
+                data-tooltip-content={techKey}
+                className="inline-flex items-center px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-gray-50 text-gray-700 text-[10px] sm:text-xs font-medium border border-gray-100"
+                whileHover={{ scale: 1.05, boxShadow: "0 2px 8px rgba(0,0,0,0.1)" }}
+                transition={{ type: "spring", stiffness: 400 }}
+              >
+                <i className={`${techIcons[techKey] || 'devicon-code-plain'} mr-0.5 sm:mr-1 text-base sm:text-lg`}></i>
+                {techKey}
+              </motion.span>
+            );
+          })}
+        </div>
+        
+        <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3">
+          <motion.a
+            href={link}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-green-500 hover:to-blue-600 hover:scale-105 transition-all duration-300 text-sm font-medium py-2 px-6 rounded-lg shadow-lg hover:shadow-2xl"
+            className="flex items-center justify-center gap-1.5 sm:gap-2 flex-1 py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-sm hover:shadow-md text-sm sm:text-base"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
           >
-            Demo
-          </a>
-        )}
+            <FiGithub className="text-base sm:text-lg" />
+            <span>View Code</span>
+          </motion.a>
+          {demo && (
+            <motion.a
+              href={demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-1.5 sm:gap-2 flex-1 py-2 sm:py-2.5 px-3 sm:px-4 rounded-lg bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 text-white transition-all duration-300 shadow-sm hover:shadow-md text-sm sm:text-base"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <FiExternalLink className="text-base sm:text-lg" />
+              <span>Live Demo</span>
+            </motion.a>
+          )}
+        </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-
 const Projects = () => {
-  const theme = useContext(ThemeContext);
-  const darkMode = theme.state.darkMode;
+  const [visibleProjects, setVisibleProjects] = useState(6);
+  const [filter, setFilter] = useState("All");
+  const [isFiltering, setIsFiltering] = useState(false);
 
   const projects = [
     {
@@ -103,46 +232,130 @@ const Projects = () => {
     },
   ];
 
-  const [visibleProjects, setVisibleProjects] = useState(3);
+  const techFilters = ["All", "Web", "Mobile", "Data", "Game"];
+  
+  const filteredProjects = filter === "All" 
+    ? projects 
+    : projects.filter(project => {
+        if (filter === "Web") return project.description.includes("HTML") || project.description.includes("React");
+        if (filter === "Mobile") return project.description.includes("Flutter");
+        if (filter === "Data") return project.description.includes("Python") && project.description.includes("SQL");
+        if (filter === "Game") return project.title.toLowerCase().includes("game");
+        return true;
+      });
+
+  const handleFilterChange = (tech) => {
+    setIsFiltering(true);
+    setFilter(tech);
+    setVisibleProjects(6);
+    setTimeout(() => setIsFiltering(false), 500);
+  };
 
   const handleShowMore = () => {
-    setVisibleProjects((prev) => prev + 3);
+    setVisibleProjects(filteredProjects.length);
+  };
+
+  const handleShowLess = () => {
+    setVisibleProjects(6);
   };
 
   return (
-    <div
-      id="projects"
-      className={darkMode ? "bg-white text-black" : "bg-gray-200 text-gray-900"}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-12">
-        <h2 className="text-5xl font-bold text-center mb-4 text-gray-800">Projects</h2>
-        <h4 className="text-3xl font-semibold text-blue-700 text-center mb-8">
-          What I Built
-        </h4>
-        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.slice(0, visibleProjects).map((project, index) => (
-            <Card
-              key={index}
-              imageSrc={project.imageSrc}
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              demo={project.demo}
-            />
-          ))}
+    <section id="projects" className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-blue-50 mb-4 ml-165">
+          <Folder className="w-5 h-5 mr-2 text-blue-600" />
+          <span className="text-sm font-medium text-blue-400">My Project</span>
         </div>
-        {visibleProjects < projects.length && (
-          <div className="text-center mt-6">
-            <button
-              onClick={handleShowMore}
-              className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-500 transition duration-300"
+
+       <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900"
+          >
+            My Projects
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-lg md:max-w-2xl mx-auto"
+          >
+            A showcase of frontends, full-stack apps, and tools — built with clean design, efficient code, and a user-first mindset.
+          </motion.p>
+        </div>
+
+        <motion.div 
+          className="flex flex-wrap justify-center mb-10 sm:mb-12 md:mb-16 gap-2 sm:gap-3"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          {techFilters.map((tech) => (
+            <motion.button
+              key={tech}
+              onClick={() => handleFilterChange(tech)}
+              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
+                filter === tech 
+                  ? "bg-gradient-to-r from-blue-600 to-blue-400 text-white shadow-lg"
+                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300 shadow-sm"
+              }`}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Show More
-            </button>
+              {tech}
+            </motion.button>
+          ))}
+        </motion.div>
+
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          layout
+        >
+          <AnimatePresence mode="wait">
+            {!isFiltering && filteredProjects.slice(0, visibleProjects).map((project, index) => (
+              <Card
+                key={project.title}
+                index={index % 6}
+                imageSrc={project.imageSrc}
+                title={project.title}
+                description={project.description}
+                link={project.link}
+                demo={project.demo}
+              />
+            ))}
+          </AnimatePresence>
+        </motion.div>
+
+        {filteredProjects.length > 6 && (
+          <div className="text-center mt-10 sm:mt-12 md:mt-16">
+            {visibleProjects < filteredProjects.length ? (
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(59, 130, 246, 0.3)" }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleShowMore}
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white shadow-lg transition-all duration-300 flex items-center mx-auto gap-1.5 sm:gap-2 text-sm sm:text-base"
+              >
+                <span>Load More</span>
+                <FiChevronDown size={16} className="sm:h-4.5 sm:w-4.5" />
+              </motion.button>
+            ) : (
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)" }}
+                whileTap={{ scale: 0.98 }}
+                onClick={handleShowLess}
+                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-white hover:bg-gray-50 text-gray-700 shadow-md transition-all duration-300 flex items-center mx-auto gap-1.5 sm:gap-2 border border-gray-200 text-sm sm:text-base"
+              >
+                <span>Show Less</span>
+                <FiChevronUp size={16} className="sm:h-4.5 sm:w-4.5" />
+              </motion.button>
+            )}
           </div>
         )}
       </div>
-    </div>
+      <Tooltip id="tech-tooltip" place="top" effect="solid" className="z-50" />
+    </section>
   );
 };
 

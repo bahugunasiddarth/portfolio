@@ -26,14 +26,24 @@ const Navbar = () => {
       icon: <FiUser className="mr-2" />
     },
     {
-      name: "Services",
-      route: "services",
-      icon: <FiCode className="mr-2" />
+      name: "Experience",
+      route: "ExperienceSection",
+      icon: <FiUser className="mr-2" />
+    },
+    {
+      name: "Education",
+      route: "EducationSection",
+      icon: <FiUser className="mr-2" />
     },
     {
       name: "Projects",
       route: "projects",
       icon: <FiBriefcase className="mr-2" />
+    },
+    {
+      name: "Services",
+      route: "services",
+      icon: <FiCode className="mr-2" />
     },
     {
       name: "Contact",
@@ -175,19 +185,6 @@ const Navbar = () => {
                   </motion.a>
                 ))}
                 
-                <motion.button
-                  onClick={toggleTheme}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  className={`p-2 rounded-full ${
-                    darkMode
-                      ? "bg-gray-100 text-yellow-500 hover:bg-gray-200"
-                      : "bg-gray-700 text-yellow-300 hover:bg-gray-600"
-                  } transition-all`}
-                  aria-label="Toggle theme"
-                >
-                  {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
-                </motion.button>
               </div>
             </div>
             
@@ -211,18 +208,6 @@ const Navbar = () => {
                   </motion.a>
                 ))}
                 
-                <motion.button
-                  onClick={toggleTheme}
-                  whileTap={{ scale: 0.9 }}
-                  className={`p-2 rounded-full ${
-                    darkMode
-                      ? "bg-gray-100 text-yellow-500"
-                      : "bg-gray-700 text-yellow-300"
-                  } transition-all`}
-                  aria-label="Toggle theme"
-                >
-                  {darkMode ? <FiSun size={18} /> : <FiMoon size={18} />}
-                </motion.button>
               </div>
 
               <Hamburger
