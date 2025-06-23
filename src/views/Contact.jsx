@@ -1,8 +1,9 @@
 import React, { useContext, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin, FiSend, FiCheckCircle } from "react-icons/fi";
+import { FiMail, FiMapPin, FiSend, FiCheckCircle } from "react-icons/fi";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { ThemeContext } from "../themeProvider";
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const theme = useContext(ThemeContext);
@@ -16,6 +17,7 @@ const Contact = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activeField, setActiveField] = useState(null);
   const [hoveredContact, setHoveredContact] = useState(null);
+  const [error, setError] = useState(null);
 
   const contactLinks = [
     { name: "LinkedIn", icon: <FaLinkedin className="w-5 h-5" />, link: "https://www.linkedin.com/in/siddharth-bahuguna-3611a1212/" },
@@ -23,14 +25,33 @@ const Contact = () => {
     { name: "Instagram", icon: <FaInstagram className="w-5 h-5" />, link: "https://www.instagram.com/bahugunasiddarth_2?igsh=OXVxZWRrOWtxaXBq" }
   ];
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setIsLoading(true);
+  setError(null);
+  
+  try {
+    // Use EmailJS instead of Webform3
+    const response = await emailjs.sendForm(
+      'service_tsf024a', // Replace with your EmailJS service ID
+      'template_y5yazgb', // The template ID from your screenshot
+      e.target,
+      '5cU58pF34kp5EjJiv' // Replace with your EmailJS public key
+    );
+
+    if (response.status === 200) {
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } else {
+      throw new Error('Failed to send message');
+    }
+  } catch (err) {
+    setError(err.message || 'Failed to submit form. Please try again or email me directly at bahugunasiddhi@gmail.com');
+    console.error('Form submission error:', err);
+  } finally {
     setIsLoading(false);
-  };
+  }
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -76,18 +97,18 @@ const Contact = () => {
       id="contact" 
       className={`relative overflow-hidden ${darkMode ? "bg-gray-950" : "bg-gradient-to-b from-gray-50 to-white"} pt-20 md:pt-28 min-h-screen`}
     >
-      {/* Luxury background elements - optimized for mobile */}
+      {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className={`absolute top-1/4 -left-20 w-64 h-64 md:w-96 md:h-96 rounded-full ${darkMode ? "bg-indigo-900/10" : "bg-indigo-100/20"} blur-[80px] md:blur-[120px]`}></div>
         <div className={`absolute bottom-1/3 -right-20 w-64 h-64 md:w-96 md:h-96 rounded-full ${darkMode ? "bg-blue-900/10" : "bg-blue-100/20"} blur-[80px] md:blur-[120px]`}></div>
         <div className={`absolute top-1/2 left-1/2 w-60 h-60 md:w-80 md:h-80 rounded-full ${darkMode ? "bg-purple-900/10" : "bg-purple-100/15"} blur-[60px] md:blur-[100px]`}></div>
       </div>
 
-      {/* Subtle grid overlay */}
+      {/* Grid overlay */}
       <div className={`absolute inset-0 opacity-10 ${darkMode ? "bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM2NjNmZjkiIHN0cm9rZS13aWR0aD0iMC4yIiBkPSJNIDAgMCBMIDAgNDAgTSA0MCAwIEwgNDAgNDAgTSAwIDAgTCA0MCAwIE0gMCA0MCBMIDQwIDQwIi8+PC9zdmc+')]" : "bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSJub25lIiBzdHJva2U9IiM4MTkwZjgiIHN0cm9rZS13aWR0aD0iMC4xNSIgZD0iTSAwIDAgTCAwIDQwIE0gNDAgMCBMIDQwIDQwIE0gMCAwIEwgNDAgMCBNIDAgNDAgTCA0MCA0MCIvPjwvc3ZnPg==')]"}`}></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Luxury header - optimized for mobile */}
+        {/* Header */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -110,7 +131,7 @@ const Contact = () => {
         </motion.div>
 
         <div className="flex flex-col lg:flex-row gap-6 md:gap-10 pb-16 md:pb-24 px-2 sm:px-0">
-          {/* Luxury Contact Form - mobile optimized */}
+          {/* Contact Form */}
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -153,6 +174,29 @@ const Contact = () => {
                     onSubmit={handleSubmit}
                     className="space-y-5 md:space-y-7"
                   >
+                    {error && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`p-4 rounded-lg ${darkMode ? "bg-red-900/30 text-red-200 border border-red-800/50" : "bg-red-100 text-red-800 border border-red-200"} shadow-inner`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                          </svg>
+                          <div>
+                            <p className="text-sm font-medium">{error}</p>
+                            <p className="text-xs mt-1">
+                              You can also email me directly at{' '}
+                              <a href="mailto:bahugunasiddhi@gmail.com" className={`underline ${darkMode ? "text-blue-400" : "text-blue-600"}`}>
+                                bahugunasiddhi@gmail.com
+                              </a>
+                            </p>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+
                     <div>
                       <label
                         htmlFor="name"
@@ -270,7 +314,7 @@ const Contact = () => {
             </motion.div>
           </motion.div>
 
-          {/* Luxury Contact Information - mobile optimized */}
+          {/* Contact Information */}
           <motion.div 
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -291,8 +335,6 @@ const Contact = () => {
               </div>
               
               <div className="space-y-6 md:space-y-9">
-                
-
                 <div 
                   className="flex items-start gap-4 md:gap-5 group"
                   onMouseEnter={() => setHoveredContact('email')}
@@ -377,7 +419,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Ultra Premium Footer - mobile optimized */}
+      {/* Footer */}
       <footer className={`w-full py-6 md:py-10 relative ${darkMode ? "bg-gray-900/80 text-gray-400 border-t border-gray-800/50" : "bg-white/80 text-gray-600 border-t border-gray-200/50"} backdrop-blur-md`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
