@@ -12,7 +12,6 @@ Designed and developed a responsive portfolio website to showcase skills, projec
 ## 📸 Screenshot
 
 ![Screenshot 2025-06-23 030832](https://github.com/user-attachments/assets/c63db670-317d-4442-907e-2099a2844a31)
-![Screenshot 2025-06-23 030832](https://github.com/user-attachments/assets/c63db670-317d-4442-907e-2099a2844a31)
 
 ## 📂 Project Structure
 
