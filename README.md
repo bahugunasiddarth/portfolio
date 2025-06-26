@@ -2,7 +2,7 @@
 
 Designed and developed a responsive portfolio website to showcase skills, projects, and achievements. Utilized **HTML, CSS, JavaScript, and Tailwind CSS** for a clean, modern, and user-friendly design. Deployed on **Vercel** to ensure high performance and accessibility.
 
-🔗 **Live Demo:** [siddharth-mu.vercel.app](https://siddharth-mu.vercel.app)
+🔗 **Live Demo:** [siddharthbahuguna.in](https://siddharthbahuguna.in)
 
 ## 🚀 Tech Stack
 
@@ -11,7 +11,8 @@ Designed and developed a responsive portfolio website to showcase skills, projec
 
 ## 📸 Screenshot
 
-![Portfolio Screenshot](https://github.com/user-attachments/assets/8939d57d-04a8-47dc-826b-ea83c8a86f83)
+![Screenshot 2025-06-23 030832](https://github.com/user-attachments/assets/c63db670-317d-4442-907e-2099a2844a31)
+![Screenshot 2025-06-23 030832](https://github.com/user-attachments/assets/c63db670-317d-4442-907e-2099a2844a31)
 
 ## 📂 Project Structure
 
@@ -33,4 +34,3 @@ Designed and developed a responsive portfolio website to showcase skills, projec
 ### ✨ Connect with Me
 **Portfolio:** [siddharth-mu.vercel.app](https://siddharth-mu.vercel.app)  
 **GitHub:** [github.com/yourusername](https://github.com/yourusername)  
-**LinkedIn:** [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)
