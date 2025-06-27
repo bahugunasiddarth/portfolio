@@ -3,7 +3,7 @@ export const techStack = [
   
   { name: "NextJS", link: "https://i.ibb.co/SLfGXWY/next.png" },
   { name: "Python", link: "https://img.icons8.com/?size=100&id=13441&format=png&color=000000" },
-  { name: "C Language", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-plain.svg" },
+  { name: "C Language", link: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-plain.svg" }, 
   
   // { name: "TypeScript", link: "https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" },
   // { name: "Express", link: "https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" },
