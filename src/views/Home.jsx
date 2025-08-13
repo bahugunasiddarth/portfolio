@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import developerIllustration from "../assets/coding.png"; // Should be PNG with transparency
+import developerIllustration from "../assets/coding.png";  
 import { contactLinks } from "../constants";
 import { ThemeContext } from "../themeProvider";
 import { motion } from "framer-motion";
