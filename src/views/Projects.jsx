@@ -173,7 +173,7 @@ const Projects = () => {
   const projects = [
      {
       imageSrc: "https://i.ibb.co/SXb2HVzP/Screenshot-2025-08-13-225151.png",
-      title: "Drvyn: Car Service Bookingx",
+      title: "Drvyn: Car Service Booking",
       description: " Next.js , TailwindCSS , FastAPI , TypeScript , MongoDB",
       link: "https://github.com/bahugunasiddarth",
       demo: "https://drvyn.in"
