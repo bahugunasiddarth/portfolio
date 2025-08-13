@@ -171,6 +171,13 @@ const Projects = () => {
   const [isFiltering, setIsFiltering] = useState(false);
 
   const projects = [
+     {
+      imageSrc: "https://i.ibb.co/SXb2HVzP/Screenshot-2025-08-13-225151.png",
+      title: "Drvyn: Car Service Bookingx",
+      description: " Next.js , TailwindCSS , FastAPI , TypeScript , MongoDB",
+      link: "https://github.com/bahugunasiddarth",
+      demo: "https://drvyn.in"
+    },
     {
       imageSrc: "https://i.ibb.co/LZM7PGM/Whats-App-Image-2025-01-22-at-18-39-03-c8c85761.jpg",
       title: "LiveCare Hospital",
