@@ -10,7 +10,7 @@ const ExperienceSection = ({ theme = 'dark' }) => {
     {
       id: 1,
       role: "Software Developer Intern",
-      company: "VODIN TECHNOLOGIES PRIVATE LIMITED",
+      company: "Drvyn.in",
       period: "Apr 2025 - Present",
       duration: "2 years 8 months",
       location: "Coimbatore Tamil Nadu (Remote)",
