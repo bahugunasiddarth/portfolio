@@ -173,14 +173,14 @@ const Projects = () => {
   const projects = [
     {
       imageSrc: "https://i.ibb.co/BHvT1Xmv/Screenshot-2026-02-04-212657.png",
-      title: "Khushi gems dashboard",
+      title: "Khushi Gems Dashboard",
       description: " Next.js , TailwindCSS , TypeScript , Firebase",
       link: "https://github.com/bahugunasiddarth",
       demo: "https://www.khushigemsjaipur.com"
     },
     {
       imageSrc: "https://i.ibb.co/p6GkHZhn/Screenshot-2026-02-04-212400.png",
-      title: "Khushi gems & Jewels",
+      title: "Khushi Gems & Jewels",
       description: " Next.js , TailwindCSS , TypeScript , Firebase",
       link: "https://github.com/bahugunasiddarth",
       demo: "https://www.khushigemsjaipur.com"
@@ -199,6 +199,13 @@ const Projects = () => {
       description: " Next.js , TailwindCSS , FastAPI , TypeScript , MongoDB",
       link: "https://github.com/bahugunasiddarth",
       demo: "https://drvyn.in"
+    },
+    {
+      imageSrc: "https://i.ibb.co/fGT9Kk8D/Screenshot-2026-02-04-213139.png",
+      title: "Portfolio Landing Page",
+      description: " Next.js , TailwindCSS , TypeScript ",
+      link: "https://github.com/bahugunasiddarth",
+      demo: "https://www.iralawoffice.in"
     },
     {
       imageSrc: "https://i.ibb.co/LZM7PGM/Whats-App-Image-2025-01-22-at-18-39-03-c8c85761.jpg",
