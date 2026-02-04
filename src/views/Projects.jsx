@@ -171,6 +171,28 @@ const Projects = () => {
   const [isFiltering, setIsFiltering] = useState(false);
 
   const projects = [
+    {
+      imageSrc: "https://i.ibb.co/BHvT1Xmv/Screenshot-2026-02-04-212657.png",
+      title: "Khushi gems dashboard",
+      description: " Next.js , TailwindCSS , TypeScript , Firebase",
+      link: "https://github.com/bahugunasiddarth",
+      demo: "https://www.khushigemsjaipur.com"
+    },
+    {
+      imageSrc: "https://i.ibb.co/p6GkHZhn/Screenshot-2026-02-04-212400.png",
+      title: "Khushi gems & Jewels",
+      description: " Next.js , TailwindCSS , TypeScript , Firebase",
+      link: "https://github.com/bahugunasiddarth",
+      demo: "https://www.khushigemsjaipur.com"
+    },
+    {
+      imageSrc: "https://i.ibb.co/CK0Skr4g/Screenshot-2026-02-04-212743.png",
+      title: "Drvyn: Garage Management System",
+      description: " Next.js , TailwindCSS , FastAPI , TypeScript , MongoDB",
+      link: "https://github.com/bahugunasiddarth",
+      demo: "https://grm.drvyn.in"
+    },
+    
      {
       imageSrc: "https://i.ibb.co/SXb2HVzP/Screenshot-2025-08-13-225151.png",
       title: "Drvyn: Car Service Booking",
