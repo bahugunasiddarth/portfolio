@@ -296,63 +296,79 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white">
+   <section
+  id="projects"
+  className="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-gray-50 to-white"
+>
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    
-    <div className="flex justify-center">
+
+    {/* Header */}
+    <div className="flex flex-col items-center text-center mb-8 sm:mb-10 md:mb-12">
+
+      {/* Badge */}
       <div className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-blue-50 mb-4">
         <Folder className="w-5 h-5 mr-2 text-blue-600" />
-        <span className="text-sm font-medium text-blue-400">My Project</span>
+        <span className="text-sm font-medium text-blue-400">
+          My Project
+        </span>
       </div>
 
-       <div className="text-center mb-6 sm:mb-8 md:mb-10">
-          <motion.h2 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900"
-          >
-            My Projects
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-lg md:max-w-2xl mx-auto"
-          >
-            A showcase of frontends, full-stack apps, and tools — built with clean design, efficient code, and a user-first mindset.
-          </motion.p>
-        </div>
+      {/* Title */}
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-gray-900"
+      >
+        My Projects
+      </motion.h2>
 
-        <motion.div 
-          className="flex flex-wrap justify-center mb-10 sm:mb-12 md:mb-16 gap-2 sm:gap-3"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          {techFilters.map((tech) => (
-            <motion.button
-              key={tech}
-              onClick={() => handleFilterChange(tech)}
-              className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
-                filter === tech 
-                  ? "bg-gradient-to-r from-blue-600 to-blue-400 text-white shadow-lg"
-                  : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300 shadow-sm"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {tech}
-            </motion.button>
-          ))}
-        </motion.div>
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="text-base sm:text-lg md:text-xl text-gray-600 max-w-md sm:max-w-lg md:max-w-2xl"
+      >
+        A showcase of frontends, full-stack apps, and tools — built with clean
+        design, efficient code, and a user-first mindset.
+      </motion.p>
+    </div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          layout
+    {/* Filters */}
+    <motion.div
+      className="flex flex-wrap justify-center mb-10 sm:mb-12 md:mb-16 gap-2 sm:gap-3"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.5 }}
+    >
+      {techFilters.map((tech) => (
+        <motion.button
+          key={tech}
+          onClick={() => handleFilterChange(tech)}
+          className={`px-4 sm:px-6 py-2 sm:py-2.5 rounded-full font-medium text-sm sm:text-base transition-all duration-300 ${
+            filter === tech
+              ? "bg-gradient-to-r from-blue-600 to-blue-400 text-white shadow-lg"
+              : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200 hover:border-gray-300 shadow-sm"
+          }`}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          <AnimatePresence mode="wait">
-            {!isFiltering && filteredProjects.slice(0, visibleProjects).map((project, index) => (
+          {tech}
+        </motion.button>
+      ))}
+    </motion.div>
+
+    {/* Projects Grid */}
+    <motion.div
+      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
+      layout
+    >
+      <AnimatePresence mode="wait">
+        {!isFiltering &&
+          filteredProjects
+            .slice(0, visibleProjects)
+            .map((project, index) => (
               <Card
                 key={project.title}
                 index={index % 6}
@@ -363,37 +379,46 @@ const Projects = () => {
                 demo={project.demo}
               />
             ))}
-          </AnimatePresence>
-        </motion.div>
+      </AnimatePresence>
+    </motion.div>
 
-        {filteredProjects.length > 6 && (
-          <div className="text-center mt-10 sm:mt-12 md:mt-16">
-            {visibleProjects < filteredProjects.length ? (
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(59, 130, 246, 0.3)" }}
-                whileTap={{ scale: 0.98 }}
-                onClick={handleShowMore}
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white shadow-lg transition-all duration-300 flex items-center mx-auto gap-1.5 sm:gap-2 text-sm sm:text-base"
-              >
-                <span>Load More</span>
-                <FiChevronDown size={16} className="sm:h-4.5 sm:w-4.5" />
-              </motion.button>
-            ) : (
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)" }}
-                whileTap={{ scale: 0.98 }}
-                onClick={handleShowLess}
-                className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-white hover:bg-gray-50 text-gray-700 shadow-md transition-all duration-300 flex items-center mx-auto gap-1.5 sm:gap-2 border border-gray-200 text-sm sm:text-base"
-              >
-                <span>Show Less</span>
-                <FiChevronUp size={16} className="sm:h-4.5 sm:w-4.5" />
-              </motion.button>
-            )}
-          </div>
+    {/* Load More / Less */}
+    {filteredProjects.length > 6 && (
+      <div className="text-center mt-10 sm:mt-12 md:mt-16">
+        {visibleProjects < filteredProjects.length ? (
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 5px 15px rgba(59, 130, 246, 0.3)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleShowMore}
+            className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white shadow-lg transition-all duration-300 flex items-center mx-auto gap-2 text-sm sm:text-base"
+          >
+            <span>Load More</span>
+            <FiChevronDown size={16} />
+          </motion.button>
+        ) : (
+          <motion.button
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
+            }}
+            whileTap={{ scale: 0.98 }}
+            onClick={handleShowLess}
+            className="px-6 sm:px-8 py-3 sm:py-3.5 rounded-full font-medium bg-white hover:bg-gray-50 text-gray-700 shadow-md transition-all duration-300 flex items-center mx-auto gap-2 border border-gray-200 text-sm sm:text-base"
+          >
+            <span>Show Less</span>
+            <FiChevronUp size={16} />
+          </motion.button>
         )}
       </div>
-      <Tooltip id="tech-tooltip" place="top" effect="solid" className="z-50" />
-    </section>
+    )}
+
+  </div>
+
+  <Tooltip id="tech-tooltip" place="top" effect="solid" className="z-50" />
+</section>
   );
 };
 
