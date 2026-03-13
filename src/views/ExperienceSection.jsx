@@ -6,23 +6,35 @@ const ExperienceSection = ({ theme = 'dark' }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.1 });
 
-  const experiences = [
+const experiences = [
     {
       id: 1,
-      role: "Software Developer Intern",
-      company: "Drvyn.in",
-      period: "Apr 2025 - Present",
-      duration: "2 years 8 months",
-      location: "Coimbatore Tamil Nadu (Remote)",
-      description: "Developed a full-stack Car Repair Booking Website with Next.js and FastAPI, featuring user authentication using JWT.",
+      role: "Junior Developer (Full-time)",
+      company: "Carage Car Care And Services",
+      period: "Sep 2025 – Present",
+      location: "Coimbatore, Tamil Nadu (Remote)",
+      description: "Leading the development of digital solutions for automotive service management and customer engagement.",
       achievements: [
-        "Built a full-stack Car Repair Booking platform using Next.js with TypeScript, FastAPI, and MongoDB, featuring secure JWT authentication and role-based access.",
-        "Designed a responsive UI with Tailwind CSS, including real-time service booking, filtering, and dynamic form validation.",
-        "Deployed frontend on Vercel and backend on Render, with environment-based configuration and optimized API performance using async FastAPI routes."
+        "Developing and maintaining full-stack applications using Next.js and FastAPI to streamline car service bookings.",
+        "Implementing responsive and interactive UIs with Tailwind CSS and Framer Motion for a premium user experience.",
+        "Collaborating on backend architecture and API integration to improve operational efficiency for the garage network."
       ],
-      skills: ["NextJS", "TypeScript", "FastAPI", "MongoDB", "Tailwind CSS"]
+      skills: ["Next.js", "FastAPI", "MongoDB", "Tailwind CSS", "TypeScript"]
     },
-    
+    {
+      id: 2,
+      role: "Software Developer Intern",
+      company: "Carage Car Care And Services",
+      period: "Apr 2025 – Sep 2025",
+      location: "Coimbatore, Tamil Nadu (Remote)",
+      description: "Contributed to building the foundation of the Carage digital platform and service tracking systems.",
+      achievements: [
+        "Assisted in the development of core website features and internal management dashboards.",
+        "Optimized frontend performance and ensured cross-browser compatibility for client-facing pages.",
+        "Worked closely with senior developers to implement secure authentication and database schemas."
+      ],
+      skills: ["React", "JavaScript", "Firebase", "CSS", "Git"]
+    }
   ];
 
   // Theme classes
